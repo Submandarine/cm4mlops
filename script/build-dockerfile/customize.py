@@ -69,10 +69,10 @@ def preprocess(i):
     else:
         cm_mlops_repo = "mlcommons@cm4mlops"
 
-    # if env.get("CM_MLOPS_REPO_BRANCH", '') != '':
-    #     cm_mlops_repo_branch_string = f" --branch {env['CM_MLOPS_REPO_BRANCH']}"
-    # else:
-    cm_mlops_repo_branch_string = ""
+    if env.get("CM_MLOPS_REPO_BRANCH", '') != '':
+        cm_mlops_repo_branch_string = f" --branch {env['CM_MLOPS_REPO_BRANCH']}"
+    else:
+        cm_mlops_repo_branch_string = ""
 
     if env.get('CM_DOCKERFILE_WITH_PATH', '') == '':
         env['CM_DOCKERFILE_WITH_PATH'] = os.path.join(os.getcwd(), "Dockerfile")
@@ -205,9 +205,16 @@ def preprocess(i):
     # Add possibility to force rebuild with some extra flag for the repository
     x = env.get('CM_DOCKER_ADD_FLAG_TO_CM_MLOPS_REPO','')
     if x!='': x=' '+x
+    repos = "/home/cmuser/CM/repos/"
 
-    f.write('RUN cm pull repo ' + x + EOL)
-    f.write('RUN git clone https://github.com/Submandarine/cm4mlops.git ~/CM/repos/mlcommons@cm4mlops ' + x + EOL)
+    f.write('RUN cm pull repo ' + cm_mlops_repo + x + EOL)
+    f.write(f'RUN git clone https://github.com/Submandarine/cm4mlops.git {repos}Submandarine@cm4mlops ' + EOL)
+
+    f.write(f'RUN echo $(ls -al {repos}mlcommons@cm4mlops/script/build-dockerfile/customize.py)' + EOL)
+    # f.write(f'RUN echo $(ls -al {repos}Submandarine@cm4mlops/script/app-mlperf-inference-nvidia/_cm.yaml)' + EOL)
+
+    f.write(f'RUN cp {repos}Submandarine@cm4mlops/script/build-dockerfile/customize.py {repos}mlcommons@cm4mlops/script/build-dockerfile/customize.py ' + EOL)
+    f.write(f'RUN cp {repos}Submandarine@cm4mlops/script/app-mlperf-inference-nvidia/_cm.yaml {repos}mlcommons@cm4mlops/script/app-mlperf-inference-nvidia/_cm.yaml ' + EOL)
 
     # Check extra repositories
     x = env.get('CM_DOCKER_EXTRA_CM_REPOS','')
@@ -240,19 +247,11 @@ def preprocess(i):
             skip_extra = True
         else:
             if str(env.get('CM_DOCKER_NOT_PULL_UPDATE', 'False')).lower() not in ["yes", "1", "true"]:
-                env['CM_DOCKER_RUN_CMD'] += ""
+                env['CM_DOCKER_RUN_CMD'] += "cm pull repo && " 
             env['CM_DOCKER_RUN_CMD'] += "cm run script --tags=" + env['CM_DOCKER_RUN_SCRIPT_TAGS']+ ' --quiet'
     else:
         if str(env.get('CM_DOCKER_NOT_PULL_UPDATE', 'False')).lower() not in ["yes", "1", "true"]:
-            env['CM_DOCKER_RUN_CMD']="env['CM_DOCKER_RUN_CMD']"
-    
-    #     else:
-    #         if str(env.get('CM_DOCKER_NOT_PULL_UPDATE', 'False')).lower() not in ["yes", "1", "true"]:
-    #             env['CM_DOCKER_RUN_CMD'] += "git clone https://github.com/Submandarine/cm4mlops.git ~/CM/repos/mlcommons@cm4mlops && " 
-    #         env['CM_DOCKER_RUN_CMD'] += "cm run script --tags=" + env['CM_DOCKER_RUN_SCRIPT_TAGS']+ ' --quiet'
-    # else:
-    #     if str(env.get('CM_DOCKER_NOT_PULL_UPDATE', 'False')).lower() not in ["yes", "1", "true"]:
-    #         env['CM_DOCKER_RUN_CMD']="git clone https://github.com/Submandarine/cm4mlops.git ~/CM/repos/mlcommons@cm4mlops && " + env['CM_DOCKER_RUN_CMD']
+            env['CM_DOCKER_RUN_CMD']="cm pull repo && " + env['CM_DOCKER_RUN_CMD']
     
     print(env['CM_DOCKER_RUN_CMD'])
     fake_run = env.get("CM_DOCKER_FAKE_RUN_OPTION"," --fake_run") + dockerfile_env_input_string
