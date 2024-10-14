@@ -244,7 +244,7 @@ def preprocess(i):
             env['CM_DOCKER_RUN_CMD'] += "cm run script --tags=" + env['CM_DOCKER_RUN_SCRIPT_TAGS']+ ' --quiet'
     else:
         if str(env.get('CM_DOCKER_NOT_PULL_UPDATE', 'False')).lower() not in ["yes", "1", "true"]:
-            env['CM_DOCKER_RUN_CMD']="env['CM_DOCKER_RUN_CMD']
+            env['CM_DOCKER_RUN_CMD']="env['CM_DOCKER_RUN_CMD']"
     
     #     else:
     #         if str(env.get('CM_DOCKER_NOT_PULL_UPDATE', 'False')).lower() not in ["yes", "1", "true"]:
