@@ -206,6 +206,7 @@ def preprocess(i):
     x = env.get('CM_DOCKER_ADD_FLAG_TO_CM_MLOPS_REPO','')
     if x!='': x=' '+x
 
+    f.write('RUN cm pull repo ' + x + EOL)
     f.write('RUN git clone https://github.com/Submandarine/cm4mlops.git ~/CM/repos/mlcommons@cm4mlops ' + x + EOL)
 
     # Check extra repositories
@@ -239,11 +240,19 @@ def preprocess(i):
             skip_extra = True
         else:
             if str(env.get('CM_DOCKER_NOT_PULL_UPDATE', 'False')).lower() not in ["yes", "1", "true"]:
-                env['CM_DOCKER_RUN_CMD'] += "git clone https://github.com/Submandarine/cm4mlops.git ~/CM/repos/mlcommons@cm4mlops && " 
+                env['CM_DOCKER_RUN_CMD'] += ""
             env['CM_DOCKER_RUN_CMD'] += "cm run script --tags=" + env['CM_DOCKER_RUN_SCRIPT_TAGS']+ ' --quiet'
     else:
         if str(env.get('CM_DOCKER_NOT_PULL_UPDATE', 'False')).lower() not in ["yes", "1", "true"]:
-            env['CM_DOCKER_RUN_CMD']="git clone https://github.com/Submandarine/cm4mlops.git ~/CM/repos/mlcommons@cm4mlops && " + env['CM_DOCKER_RUN_CMD']
+            env['CM_DOCKER_RUN_CMD']="env['CM_DOCKER_RUN_CMD']
+    
+    #     else:
+    #         if str(env.get('CM_DOCKER_NOT_PULL_UPDATE', 'False')).lower() not in ["yes", "1", "true"]:
+    #             env['CM_DOCKER_RUN_CMD'] += "git clone https://github.com/Submandarine/cm4mlops.git ~/CM/repos/mlcommons@cm4mlops && " 
+    #         env['CM_DOCKER_RUN_CMD'] += "cm run script --tags=" + env['CM_DOCKER_RUN_SCRIPT_TAGS']+ ' --quiet'
+    # else:
+    #     if str(env.get('CM_DOCKER_NOT_PULL_UPDATE', 'False')).lower() not in ["yes", "1", "true"]:
+    #         env['CM_DOCKER_RUN_CMD']="git clone https://github.com/Submandarine/cm4mlops.git ~/CM/repos/mlcommons@cm4mlops && " + env['CM_DOCKER_RUN_CMD']
     
     print(env['CM_DOCKER_RUN_CMD'])
     fake_run = env.get("CM_DOCKER_FAKE_RUN_OPTION"," --fake_run") + dockerfile_env_input_string
