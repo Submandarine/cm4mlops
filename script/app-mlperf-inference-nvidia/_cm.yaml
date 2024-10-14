@@ -344,25 +344,25 @@ variations:
     default: true
     env:
       CM_MLPERF_INFERENCE_CODE_VERSION: "v4.0"
-    adr:
-      pytorch:
-        tags: _for-nvidia-mlperf-inference-v4.0
+    # adr:
+    #   pytorch:
+    #     tags: _for-nvidia-mlperf-inference-v4.0
 
   v4.0:
     group: version
     env:
       CM_MLPERF_INFERENCE_CODE_VERSION: "v4.0"
       CM_MLPERF_GPTJ_MODEL_FP8_PATH_SUFFIX: GPTJ-FP8-quantized
-    adr:
-      pytorch:
-        tags: _for-nvidia-mlperf-inference-v4.0
+    # adr:
+    #   pytorch:
+    #     tags: _for-nvidia-mlperf-inference-v4.0
   v3.1:
     env:
       CM_MLPERF_INFERENCE_CODE_VERSION: "v3.1"
       CM_MLPERF_GPTJ_MODEL_FP8_PATH_SUFFIX: GPTJ-07142023.pth
-    adr:
-      pytorch:
-        tags: _for-nvidia-mlperf-inference-v3.1
+    # adr:
+    #   pytorch:
+    #     tags: _for-nvidia-mlperf-inference-v3.1
   
   # Target devices
   cpu:
@@ -499,6 +499,8 @@ variations:
     - tags: get,generic-python-lib,_package.torchmetrics
       version: 1.0.3
     - tags: get,generic-python-lib,_package.typeguard
+    - tags: get,generic-python-lib,_package.torch
+      version: 2.1.0
 
   bert_:
     deps:
