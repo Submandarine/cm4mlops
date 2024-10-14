@@ -18,3 +18,8 @@ htmlcov
 *tmp-ck-*/
 local/cache/
 
+script/app-mlperf-inference/dockerfiles/mlperf-inference:mlpinf-v4.0-cuda12.2-cudnn8.9-x86_64-ubuntu20.04-public.Dockerfile
+*tmp-state*
+*tmp-run*
+*.dockerignore
+*Dockerfile.build.*
