@@ -209,6 +209,7 @@ def preprocess(i):
     # replace files by version i own repo
     # repos = "/home/cmuser/CM/repos/"
 
+    f.write(f'RUN echo $(date) ' + EOL)
     f.write('RUN cm pull repo --url=https://github.com/Submandarine/cm4mlops' + EOL)
     # f.write('RUN cm pull repo ' + cm_mlops_repo + x + EOL)
 
