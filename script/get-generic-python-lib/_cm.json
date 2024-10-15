@@ -865,8 +865,7 @@
     },
     "torch": {
       "env": {
-        "CM_GENERIC_PYTHON_PACKAGE_NAME": "torch",
-        "CM_GENERIC_PYTHON_PIP_EXTRA_INDEX_URL": "https://download.pytorch.org/whl/cpu"
+        "CM_GENERIC_PYTHON_PACKAGE_NAME": "torch"
       },
       "new_env_keys": [
         "CM_TORCH_VERSION*"
