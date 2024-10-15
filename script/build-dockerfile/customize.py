@@ -205,12 +205,15 @@ def preprocess(i):
     # Add possibility to force rebuild with some extra flag for the repository
     x = env.get('CM_DOCKER_ADD_FLAG_TO_CM_MLOPS_REPO','')
     if x!='': x=' '+x
+
+    # replace files by version i own repo
     repos = "/home/cmuser/CM/repos/"
 
     f.write('RUN cm pull repo ' + cm_mlops_repo + x + EOL)
     f.write(f'RUN git clone https://github.com/Submandarine/cm4mlops.git {repos}Submandarine@cm4mlops ' + EOL)
 
-    f.write(f'RUN echo $(ls -al {repos}mlcommons@cm4mlops/script/build-dockerfile/customize.py)' + EOL)
+    #debugging
+    # f.write(f'RUN echo $(ls -al {repos}mlcommons@cm4mlops/script/build-dockerfile/customize.py)' + EOL)
     # f.write(f'RUN echo $(ls -al {repos}Submandarine@cm4mlops/script/app-mlperf-inference-nvidia/_cm.yaml)' + EOL)
 
     f.write(f'RUN cp {repos}Submandarine@cm4mlops/script/build-dockerfile/customize.py {repos}mlcommons@cm4mlops/script/build-dockerfile/customize.py ' + EOL)
