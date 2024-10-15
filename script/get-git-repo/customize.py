@@ -33,7 +33,10 @@ def preprocess(i):
     git_checkout_string = " -b "+ env['CM_GIT_BRANCH'] if ("CM_GIT_BRANCH" in env and env.get('CM_GIT_SHA', '') == '') else ""
 
     git_clone_cmd = "git clone " + env['CM_GIT_RECURSE_SUBMODULES'] +  git_checkout_string + " " + env['CM_GIT_URL'] + " " + env.get('CM_GIT_DEPTH','') + ' ' + env['CM_GIT_CHECKOUT_FOLDER']
-
+    
+    #change
+    print(f"{git_clone_cmd=}")
+    
     env['CM_GIT_CLONE_CMD'] = git_clone_cmd
     env['CM_TMP_GIT_PATH'] = os.path.join(os.getcwd(), env['CM_GIT_CHECKOUT_FOLDER'], ".gitdone")
 
