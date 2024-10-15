@@ -10,7 +10,7 @@ def copy_if_different(folder1, folder2):
         
         # Ensure corresponding directory exists in folder2
         if not os.path.exists(folder2_dirpath):
-            print(f"script found {folder2_dirpath} doesn't exist")
+            # print(f"script found {folder2_dirpath} doesn't exist")
             continue
         
         for filename in filenames:

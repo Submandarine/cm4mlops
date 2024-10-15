@@ -195,14 +195,16 @@ variations:
         tags: _version.4_1
     deps:
       - tags: get,generic,sys-util,_git-lfs
-      - tags: install,pytorch,from.src,_for-nvidia-mlperf-inference-v4.0
-        names:
-        - pytorch
-        - torch
-      - tags: install,torchvision,from.src,_for-nvidia-mlperf-inference-v4.0
-        names:
-        - pytorchvision
-        - torchvision
+      - tags: get,generic-python-lib,_torch
+      - tags: get,generic-python-lib,_torchvision
+      # - tags: install,pytorch,from.src,_for-nvidia-mlperf-inference-v4.0
+      #   names:
+      #   - pytorch
+      #   - torch
+      # - tags: install,torchvision,from.src,_for-nvidia-mlperf-inference-v4.0
+      #   names:
+      #   - pytorchvision
+      #   - torchvision
 
 versions:
   r2.1:
@@ -225,15 +227,16 @@ versions:
       nvidia-scratch-space:
         tags: _version.4_0
     deps:
-      - tags: install,pytorch,from.src,_for-nvidia-mlperf-inference-v3.1
-        names:
-        - pytorch
-        - torch
-      - tags: install,torchvision,from.src,_for-nvidia-mlperf-inference-v3.1
-        names:
-        - pytorchvision
-        - torchvision
-      - tags: install,nccl,libs,_cuda
+      - tags: get,generic-python-lib,_torch
+      - tags: get,generic-python-lib,_torchvision
+      # - tags: install,pytorch,from.src,_for-nvidia-mlperf-inference-v4.0
+      #   names:
+      #   - pytorch
+      #   - torch
+      # - tags: install,torchvision,from.src,_for-nvidia-mlperf-inference-v4.0
+      #   names:
+      #   - pytorchvision
+      #   - torchvision
 
   r4.0:
     add_deps_recursive:
@@ -246,14 +249,16 @@ versions:
     deps:
       - tags: get,generic,sys-util,_nlohmann-json3-dev
       - tags: get,generic,sys-util,_git-lfs
-      - tags: install,pytorch,from.src,_for-nvidia-mlperf-inference-v4.0
-        names:
-        - pytorch
-        - torch
-      - tags: install,torchvision,from.src,_for-nvidia-mlperf-inference-v4.0
-        names:
-        - pytorchvision
-        - torchvision
+      - tags: get,generic-python-lib,_torch
+      - tags: get,generic-python-lib,_torchvision
+      # - tags: install,pytorch,from.src,_for-nvidia-mlperf-inference-v4.0
+      #   names:
+      #   - pytorch
+      #   - torch
+      # - tags: install,torchvision,from.src,_for-nvidia-mlperf-inference-v4.0
+      #   names:
+      #   - pytorchvision
+      #   - torchvision
 
   r4.1-dev:
     add_deps_recursive:

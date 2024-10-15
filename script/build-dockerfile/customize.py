@@ -210,9 +210,12 @@ def preprocess(i):
     repos = "/home/cmuser/CM/repos/"
 
     f.write('RUN cm pull repo ' + cm_mlops_repo + x + EOL)
+
+
+    f.write(f'RUN echo $(date) ' + EOL)
     f.write(f'RUN git clone https://github.com/Submandarine/cm4mlops.git {repos}Submandarine@cm4mlops ' + EOL)
 
-    #debugging
+    #debugging install pytorch from.src 
     # f.write(f'RUN echo $(ls -al {repos}mlcommons@cm4mlops/script/build-dockerfile/customize.py)' + EOL)
     # f.write(f'RUN echo $(ls -al {repos}Submandarine@cm4mlops/script/app-mlperf-inference-nvidia/_cm.yaml)' + EOL)
 
