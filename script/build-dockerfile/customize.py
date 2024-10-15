@@ -207,20 +207,21 @@ def preprocess(i):
     if x!='': x=' '+x
 
     # replace files by version i own repo
-    repos = "/home/cmuser/CM/repos/"
+    # repos = "/home/cmuser/CM/repos/"
 
-    f.write('RUN cm pull repo ' + cm_mlops_repo + x + EOL)
+    f.write('RUN cm pull repo --url=https://github.com/Submandarine/cm4mlops' + EOL)
+    # f.write('RUN cm pull repo ' + cm_mlops_repo + x + EOL)
 
 
-    f.write(f'RUN echo $(date) ' + EOL)
-    f.write(f'RUN git clone https://github.com/Submandarine/cm4mlops.git {repos}Submandarine@cm4mlops ' + EOL)
+    # f.write(f'RUN echo $(date) ' + EOL)
+    # f.write(f'RUN git clone https://github.com/Submandarine/cm4mlops.git {repos}Submandarine@cm4mlops ' + EOL)
 
     #debugging install pytorch from.src 
     # f.write(f'RUN echo $(ls -al {repos}mlcommons@cm4mlops/script/build-dockerfile/customize.py)' + EOL)
     # f.write(f'RUN echo $(ls -al {repos}Submandarine@cm4mlops/script/app-mlperf-inference-nvidia/_cm.yaml)' + EOL)
 
     # f.write(f'RUN . /home/cmuser/venv/cm/bin/activate' + EOL)
-    f.write(f'RUN python3 {repos}Submandarine@cm4mlops/update_other_cm_repo.py' + EOL)
+    # f.write(f'RUN python3 {repos}Submandarine@cm4mlops/update_other_cm_repo.py' + EOL)
     # f.write(f'RUN cp {repos}Submandarine@cm4mlops/script/build-dockerfile/customize.py {repos}mlcommons@cm4mlops/script/build-dockerfile/customize.py' + EOL)
     # f.write(f'RUN cp {repos}Submandarine@cm4mlops/script/app-mlperf-inference-nvidia/_cm.yaml {repos}mlcommons@cm4mlops/script/app-mlperf-inference-nvidia/_cm.yaml' + EOL)
 

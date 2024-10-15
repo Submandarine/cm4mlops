@@ -1,7 +1,6 @@
 from cmind import utils
 import os
 import subprocess
-import /home/cmuser/CM/repos/mlcommons@cm4mlops/update_other_cm_repo
 
 def preprocess(i):
 
