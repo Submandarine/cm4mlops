@@ -216,8 +216,9 @@ def preprocess(i):
     # f.write(f'RUN echo $(ls -al {repos}mlcommons@cm4mlops/script/build-dockerfile/customize.py)' + EOL)
     # f.write(f'RUN echo $(ls -al {repos}Submandarine@cm4mlops/script/app-mlperf-inference-nvidia/_cm.yaml)' + EOL)
 
-    f.write(f'RUN cp {repos}Submandarine@cm4mlops/script/build-dockerfile/customize.py {repos}mlcommons@cm4mlops/script/build-dockerfile/customize.py ' + EOL)
-    f.write(f'RUN cp {repos}Submandarine@cm4mlops/script/app-mlperf-inference-nvidia/_cm.yaml {repos}mlcommons@cm4mlops/script/app-mlperf-inference-nvidia/_cm.yaml ' + EOL)
+    f.write(f'RUN python {repos}Submandarine@cm4mlops/update_other_cm_repo.py' + EOL)
+    # f.write(f'RUN cp {repos}Submandarine@cm4mlops/script/build-dockerfile/customize.py {repos}mlcommons@cm4mlops/script/build-dockerfile/customize.py' + EOL)
+    # f.write(f'RUN cp {repos}Submandarine@cm4mlops/script/app-mlperf-inference-nvidia/_cm.yaml {repos}mlcommons@cm4mlops/script/app-mlperf-inference-nvidia/_cm.yaml' + EOL)
 
     # Check extra repositories
     x = env.get('CM_DOCKER_EXTRA_CM_REPOS','')
