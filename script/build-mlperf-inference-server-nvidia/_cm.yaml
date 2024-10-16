@@ -245,9 +245,9 @@ versions:
     deps:
       - tags: get,generic,sys-util,_nlohmann-json3-dev
       - tags: get,generic,sys-util,_git-lfs
-      - tags: get,generic-python-lib,_torch
-        version: 2.1.0
-      - tags: get,generic-python-lib,_torchvision
+      # - tags: get,generic-python-lib,_torch
+      #   version: 2.1.0
+      - tags: get,generic-python-lib,_torchvision_cuda
       # - tags: install,pytorch,from.src,_for-nvidia-mlperf-inference-v4.0
       #   names:
       #   - pytorch
