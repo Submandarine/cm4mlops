@@ -257,6 +257,12 @@ versions:
       - tags: get,generic-python-lib,_package.torch,_index-url.https://download.pytorch.org/whl/cu121
       - tags: get,generic-python-lib,_package.torchvision,_index-url.https://download.pytorch.org/whl/cu121
         # version: 0.16.2+cu122
+      - tags: get,generic-python-lib,_package.torch,_index-url.https://download.pytorch.org/whl/cu121
+        version: 2.4.1+cu121
+      - tags: get,generic-python-lib,_package.torchvision,_index-url.https://download.pytorch.org/whl/cu121
+        version: 0.19.1+cu121
+
+
       # - tags: install,pytorch,from.src,_for-nvidia-mlperf-inference-v4.0
       #   names:
       #   - pytorch
