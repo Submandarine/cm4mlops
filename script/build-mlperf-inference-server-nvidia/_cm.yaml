@@ -245,12 +245,12 @@ versions:
     deps:
       - tags: get,generic,sys-util,_nlohmann-json3-dev
       - tags: get,generic,sys-util,_git-lfs
-      - tags: get,generic-python-lib,_torch_cuda
-        names:
-        - torch
-      - tags: get,generic-python-lib,_torchvision_cuda
-        names:
-        - torchvision
+      # - tags: get,generic-python-lib,_torch_cuda
+      #   names:
+      #   - torch
+      # - tags: get,generic-python-lib,_torchvision_cuda
+      #   names:
+      #   - torchvision
       # - tags: get,generic-python-lib,_torch
       #   version: 2.1.0
       # - tags: get,generic-python-lib,_torchvision_cuda
