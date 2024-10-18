@@ -258,7 +258,7 @@ versions:
       # - tags: get,generic-python-lib,_package.torchvision,_index-url.https://download.pytorch.org/whl/cu121
         # version: 0.16.2+cu122
       - tags: get,generic-python-lib,_package.networkx,_index-url.https://download.pytorch.org/whl/cu121
-        version: 3.0
+        version: "3.0"
       - tags: get,generic-python-lib,_package.torch,_index-url.https://download.pytorch.org/whl/cu121
         version: 2.1.0+cu121
       - tags: get,generic-python-lib,_package.torchvision,_index-url.https://download.pytorch.org/whl/cu121
